@@ -12,12 +12,14 @@ function slugger(string, opts) {
     var replacement = opts.replacement || '-';
     var smartTrim = opts.smartTrim;
     var decode = (opts.decode !== false);
+    var rewriteUmlaut = (opts.rewriteUmlaut !== false);
     var result;
     var lucky;
 
     if (typeof string !== 'string') return '';
     if (!maintainCase) string = string.toLowerCase();
     if (decode) string = decodeURIComponent(string);
+    if (rewriteUmlaut) string = string.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue');
     result = string.trim().replace(re, '').replace(whitespace, replacement);
     if (smartTrim && result.length > smartTrim) {
         lucky = result.charAt(smartTrim) === replacement;
