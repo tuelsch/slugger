@@ -12,7 +12,7 @@ function slugger(string, opts) {
     var replacement = opts.replacement || '-';
     var smartTrim = opts.smartTrim;
     var decode = (opts.decode !== false);
-    var rewriteUmlaut = (opts.rewriteUmlaut !== false);
+    var rewriteUmlaut = opts.rewriteUmlaut || false;
     var result;
     var lucky;
 
